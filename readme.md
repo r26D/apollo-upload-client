@@ -1,4 +1,4 @@
-# apollo-upload-client
+# apollo-upload-client-absinthe
 
 **This fork modifies the request format to support Absinthe's way of handling file uploads.**
 
