@@ -1,4 +1,8 @@
 # apollo-upload-client changelog
+## 12.1.0.1
+
+### Major
+    Brought over changes from Martin Richter (https://github.com/richeterre/apollo-upload-client) into the more modern version of this library
 
 ## 12.1.0
 

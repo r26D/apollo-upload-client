@@ -146,24 +146,22 @@ exports.createUploadLink = ({
       // Automatically set by fetch when the body is a FormData instance.
       delete options.headers['content-type']
 
-      // GraphQL multipart request spec:
-      // https://github.com/jaydenseric/graphql-multipart-request-spec
+     // Format body for Absinthe GraphQL, NOT according to GraphQL multipart request spec
+      // (see https://github.com/absinthe-graphql/absinthe_plug/issues/114)
 
       const form = new FormData()
 
-      form.append('operations', payload)
-
-      const map = {}
-      let i = 0
-      files.forEach(paths => {
-        map[++i] = paths
-      })
-      form.append('map', JSON.stringify(map))
-
-      i = 0
-      files.forEach((paths, file) => {
-        form.append(++i, file, file.name)
-      })
+      console.log("********")
+      console.log("Body",body)
+      console.log("*********")
+      const { query, operationName, variables } = body
+      form.append('query', query)
+      form.append('operationName', operationName)
+      form.append('variables', JSON.stringify(variables))
+      files.forEach(({ file, index }) =>
+        form.append(index, file, file.name)
+      )
+     
 
       options.body = form
     } else options.body = payload
