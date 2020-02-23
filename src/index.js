@@ -142,6 +142,10 @@ exports.createUploadLink = ({
     const { clone, files } = extractFiles(body)
     const payload = serializeFetchParameter(clone, 'Payload')
 
+    console.log("********")
+    console.log("Body",body)
+    console.log("*********")
+    console.log("<<<<<<<<<<<<<<<<<<<<<<Files in request",files.size)
     if (files.size) {
       // Automatically set by fetch when the body is a FormData instance.
       delete options.headers['content-type']
@@ -151,9 +155,6 @@ exports.createUploadLink = ({
 
       const form = new FormData()
 
-      console.log("********")
-      console.log("Body",body)
-      console.log("*********")
       const { query, operationName, variables } = body
       form.append('query', query)
       form.append('operationName', operationName)
