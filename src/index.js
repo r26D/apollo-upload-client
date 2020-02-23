@@ -8,6 +8,8 @@ const {
   parseAndCheckHttpResponse
 } = require('apollo-link-http-common')
 const { extractFiles, ReactNativeFile } = require('extract-files')
+const lodashSet = require('lodash/set')
+const shortid = require('shortid')
 
 /**
  * A React Native [`File`](https://developer.mozilla.org/docs/web/api/file)
@@ -140,17 +142,13 @@ exports.createUploadLink = ({
     )
 
     const { clone, files } = extractFiles(body)
-    const payload = serializeFetchParameter(clone, 'Payload')
 
-    console.log("********")
-    console.log("Body",body)
-    console.log("*********")
-    console.log("<<<<<<<<<<<<<<<<<<<<<<Files in request",files.size)
+    const payload = serializeFetchParameter(clone, 'Payload')
     if (files.size) {
       // Automatically set by fetch when the body is a FormData instance.
       delete options.headers['content-type']
 
-     // Format body for Absinthe GraphQL, NOT according to GraphQL multipart request spec
+      // Format body for Absinthe GraphQL, NOT according to GraphQL multipart request spec
       // (see https://github.com/absinthe-graphql/absinthe_plug/issues/114)
 
       const form = new FormData()
@@ -158,12 +156,21 @@ exports.createUploadLink = ({
       const { query, operationName, variables } = body
       form.append('query', query)
       form.append('operationName', operationName)
-      form.append('variables', JSON.stringify(variables))
-      files.forEach(({ file, index }) =>
-        form.append(index, file, file.name)
-      )
-     
 
+      //This appends the file to the FormData
+      //It also changes all references in the variables
+      //to use the same short code
+
+      files.forEach((uses, file) => {
+        const fileShortId = shortid.generate()
+        form.append(fileShortId, file)
+        uses.forEach(ref => {
+          const usage = ref.split('.')
+          usage.shift() //Removes the variables from the path
+          lodashSet(variables, usage, fileShortId)
+        })
+      })
+      form.append('variables', JSON.stringify(variables))
       options.body = form
     } else options.body = payload
 

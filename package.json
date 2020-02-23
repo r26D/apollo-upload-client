@@ -70,7 +70,7 @@
     "husky": "^3.0.0",
     "jsdoc-md": "^4.0.1",
     "lint-staged": "^9.1.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "scripts": {
     "prepare": "npm run prepare:clean && npm run prepare:js && npm run prepare:jsdoc && npm run prepare:prettier",
@@ -82,6 +82,7 @@
     "test:eslint": "eslint .",
     "test:prettier": "prettier '**/*.{json,yml,md}' -l",
     "test:size": "size-limit",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm test",
+    "fix": "npx eslint --fix src/index.js"
   }
 }
