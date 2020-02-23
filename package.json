@@ -3,16 +3,21 @@
   "version": "12.1.0-absinthe",
   "description": "A terminating Apollo Link for Apollo Client that allows FileList, File, Blob or ReactNativeFile instances within query or mutation variables and sends GraphQL multipart requests.",
   "license": "MIT",
-  "contributors": [{
-    "name": "Jayden Seric",
-    "email": "me@jaydenseric.com",
-    "url": "https://jaydenseric.com"
-  }, {
-    "name": "Martin Richter",
-    "url": "http://www.martinrichter.net/"
-  },
-  { "name": "Dirk Elmendorf",
-    "url": "http://www.r26d.com"}],
+  "contributors": [
+    {
+      "name": "Jayden Seric",
+      "email": "me@jaydenseric.com",
+      "url": "https://jaydenseric.com"
+    },
+    {
+      "name": "Martin Richter",
+      "url": "http://www.martinrichter.net/"
+    },
+    {
+      "name": "Dirk Elmendorf",
+      "url": "http://www.r26d.com"
+    }
+  ],
   "repository": "github:r26D/apollo-upload-client",
   "homepage": "https://github.com/r26D/apollo-upload-client#readme",
   "bugs": "https://github.com/r26D/apollo-upload-client/issues",
@@ -39,16 +44,18 @@
   },
   "browserslist": "Node >= 8.10, > 0.5%, not OperaMini all, not dead",
   "dependencies": {
-    "@babel/runtime": "^7.5.4",
-    "apollo-link": "^1.2.12",
-    "apollo-link-http-common": "^0.2.14",
-    "extract-files": "^5.0.1"
+    "@babel/runtime": "^7.8.4",
+    "apollo-link": "^1.2.13",
+    "apollo-link-http-common": "^0.2.15",
+    "extract-files": "^7.0.0",
+    "lodash": "^4.17.15",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/plugin-transform-runtime": "^7.5.0",
-    "@babel/preset-env": "^7.5.4",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@size-limit/preset-small-lib": "^2.2.1",
     "babel-eslint": "^10.0.2",
     "eslint": "^6.0.1",
@@ -59,7 +66,7 @@
     "eslint-plugin-jsdoc": "^18.1.5",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "graphql": "^14.4.2",
+    "graphql": "^14.6.0",
     "husky": "^3.0.0",
     "jsdoc-md": "^4.0.1",
     "lint-staged": "^9.1.0",
