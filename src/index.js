@@ -1,12 +1,13 @@
-const { ApolloLink, Observable } = require('apollo-link')
+
 const {
+  ApolloLink, Observable,
   selectURI,
   selectHttpOptionsAndBody,
   fallbackHttpConfig,
   serializeFetchParameter,
   createSignalIfSupported,
   parseAndCheckHttpResponse
-} = require('apollo-link-http-common')
+} = require('@apollo/client')
 const { extractFiles, ReactNativeFile } = require('extract-files')
 const lodashSet = require('lodash/set')
 const shortid = require('shortid')

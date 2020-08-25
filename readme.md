@@ -29,7 +29,7 @@ _A React Native file that can be used in query or mutation variables._
 > const file = new ReactNativeFile({
 >   uri: uriFromCameraRoll,
 >   name: 'a.jpg',
->   type: 'image/jpeg'
+>   type: 'image/jpeg',
 > })
 > ```
 
@@ -67,7 +67,7 @@ _A basic Apollo Client setup._
 >
 > const client = new ApolloClient({
 >   cache: new InMemoryCache(),
->   link: createUploadLink()
+>   link: createUploadLink(),
 > })
 > ```
 
@@ -115,8 +115,8 @@ _A camera roll file._
 
 > ```js
 > {
->   uri: uriFromCameraRoll,
->   name: 'a.jpg',
->   type: 'image/jpeg'
+> uri: uriFromCameraRoll,
+> name: 'a.jpg',
+> type: 'image/jpeg'
 > }
 > ```
